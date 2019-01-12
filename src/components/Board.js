@@ -33,7 +33,12 @@ export class Board extends Component{
     }
 
     renderTower(i) {
-        return <Tower idTower={i} value={this.state.towers[i]} placable={this.state.clickedIdPellet} onPelletClick={(idPellet) => this.handlePelletClick(i, idPellet)} onClick={() => this.handleClick(i)}/>
+        return <Tower idTower={i} value={this.state.towers[i]}
+                      clicked={this.state.clickedIdTower!==null && this.state.clickedIdTower === i}
+                      clickedId={this.state.clickedIdPellet}
+                      win={win(this.state.towers[nbTower-1])}
+                      onPelletClick={(idPellet) => this.handlePelletClick(i, idPellet)}
+                      onClick={() => this.handleClick(i)}/>
     }
 
     handleClick(i) {
@@ -51,13 +56,14 @@ export class Board extends Component{
     }
 
     handlePelletClick(idTower, idPellet) {
-        if (!win(this.state.towers[nbTower -1])){
-            if (this.state.clickedIdTower!==null && this.state.clickedIdTower===idTower && this.state.clickedIdPellet!==null && this.state.clickedIdPellet===idPellet)
-                this.setState({clickedIdTower: null, clickedIdPellet: null});
-            else this.setState({clickedIdTower: idTower, clickedIdPellet: idPellet})
+        if (this.state.clickedIdTower!==null && this.state.clickedIdTower===idTower && this.state.clickedIdPellet!==null && this.state.clickedIdPellet===idPellet)
+            //On selectionne celui déjà séléctionné
+            this.setState({clickedIdTower: null, clickedIdPellet: null});
+        else if (this.state.clickedIdPellet ===null && !win(this.state.towers[nbTower -1]) && idPellet === Math.min(...this.state.towers[idTower])){
+            //Si on a pas déjà séléctionné quelque chose && on a pas gagné && on séléctionne le plus petit
+            this.setState({clickedIdTower: idTower, clickedIdPellet: idPellet})
         }
     }
-
 
     render() {
         return (

@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Hanoi tower",
+  "name": "Hanoi tower for UX experiment",
   "icons": [
     {
       "src": "favicon.ico",
