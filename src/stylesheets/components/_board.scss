@@ -1,8 +1,4 @@
 .board{
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   //Largeur d'une tours plus 10px de marge *3
   width: ($pellet_base_width * $nb_pellet + 10px) * 3;
 

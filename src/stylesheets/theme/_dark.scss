@@ -1,0 +1,26 @@
+$error: #B00020;
+$background: #090F05;
+$primary-color: #F0F4F3;
+$primary-color-variant: #C1BBA8;
+$secondary-color: #EFBFA8;
+$secondary-color-variant: #EFE7CC;
+$on-primary: #FFF;
+$on-secondary: #FFF;
+
+*{
+  margin: 0;
+  padding: 0;
+}
+
+.App.dark {
+  background-color: $background;
+  height: 100vh;
+  color: #FFF;
+
+  h1 {
+    color: $primary-color;
+    text-align: center;
+  }
+
+}
+

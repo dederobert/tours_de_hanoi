@@ -6,7 +6,8 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
+      <div className={"App" + " " + this.props.theme}>
+          <h1>Tours de Hano&iuml;</h1>
           <Game/>
       </div>
     );

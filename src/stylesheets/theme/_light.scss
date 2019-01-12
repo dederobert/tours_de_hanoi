@@ -1,0 +1,52 @@
+$background: #F9FFE5;
+$error: #B00020;
+$primary-color: #1045d9;
+$primary-color-variant: #3f10d9;
+$secondary-color: #d91046;
+$secondary-color-variant: #b10041;
+$on-primary: #FFF;
+$on-secondary: #FFF;
+
+*{
+  margin: 0;
+  padding: 0;
+}
+
+.App.light {
+  background-color: $background;
+  height: 100vh;
+  color: #000;
+
+  h1 {
+    color: $primary-color;
+    text-align: center;
+  }
+
+  .important {
+    color: $secondary-color;
+  }
+
+  .btn {
+    line-height: 25px;
+    height: 25px;
+    border: 1px solid;
+    background-color: $secondary-color;
+    color: $on-secondary;
+    border-radius: 2px;
+    width: 140px;
+    display: inline-block;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $secondary-color-variant;
+    }
+  }
+
+  .container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+

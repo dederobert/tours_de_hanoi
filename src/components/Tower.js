@@ -24,7 +24,7 @@ export class Tower extends Component {
             <div className="tower" onClick={() => this.props.onClick()}>
                 {this.renderPlacable(this.props.clickedId)}
                 {tmp}
-                <div className="tower-name">Tower {this.props.idTower}</div>
+                <div className="tower-name">Tour {this.props.idTower}</div>
             </div>
         )
     }

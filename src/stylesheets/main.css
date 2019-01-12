@@ -1,3 +1,56 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.App.light {
+  background-color: #F9FFE5;
+  height: 100vh;
+  color: #000;
+}
+.App.light h1 {
+  color: #1045d9;
+  text-align: center;
+}
+.App.light .important {
+  color: #d91046;
+}
+.App.light .btn {
+  line-height: 25px;
+  height: 25px;
+  border: 1px solid;
+  background-color: #d91046;
+  color: #FFF;
+  border-radius: 2px;
+  width: 140px;
+  display: inline-block;
+  cursor: pointer;
+}
+.App.light .btn:hover {
+  background-color: #b10041;
+}
+.App.light .container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.App.dark {
+  background-color: #090F05;
+  height: 100vh;
+  color: #FFF;
+}
+.App.dark h1 {
+  color: #F0F4F3;
+  text-align: center;
+}
+
 .pellet {
   display: block;
   margin: 1px auto;
@@ -86,17 +139,19 @@ button.tower-4:first-child {
 }
 
 .board {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   width: 510px;
   height: 116px;
 }
 
+.instruction {
+  width: 500px;
+}
+.instruction ul {
+  text-align: left;
+}
+
 * {
-  margin: 0;
-  padding: 0;
+  font-family: "Open Sans", sans-serif;
 }
 
 /*# sourceMappingURL=main.css.map */
