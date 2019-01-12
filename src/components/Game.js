@@ -4,6 +4,12 @@ import {Instruction} from "./Instruction";
 
 export class Game extends Component{
 
+    save(type, click) {
+        var xhttp = new XMLHttpRequest();
+        xhttp.open("GET", "https://unrepented-apportio.000webhostapp.com/saver.php?type="+type+"&click="+click, true);
+        xhttp.send();
+    }
+
     constructor(props) {
         super(props);
         this.state = {
@@ -30,7 +36,7 @@ export class Game extends Component{
     renderBoard() {
         if (this.state.start) {
             const id = Math.floor((Math.random()*3) +1) -2;
-            return <Board loaderId={id} timer={2}/>
+            return <Board loaderId={id} timer={2} save={(click) => this.save(id, click)}/>
         }
         return null;
     }

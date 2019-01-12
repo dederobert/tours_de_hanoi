@@ -62,7 +62,10 @@ export class Board extends Component{
                 const index = tower[this.state.clickedIdTower].indexOf(this.state.clickedIdPellet);
                 tower[this.state.clickedIdTower].splice(index,1);
                 this.setState({towers: tower, clickedIdTower: null, clickedIdPellet: null});
-                if(i !== this.state.clickedIdTower) this.setState((state, props) => ({nbClick: state.nbClick + 1, loader:0}));
+                if(i !== this.state.clickedIdTower) {
+                    this.setState((state, props) => ({nbClick: state.nbClick + 1, loader:0}));
+                    if (win(this.state.towers[nbTower-1])) this.props.save(this.state.nbClick+1)
+                }
             }
         }
     }
