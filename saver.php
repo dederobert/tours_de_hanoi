@@ -25,12 +25,13 @@ class Saver {
 
     }
 
-    function insert($type, $click) {
+    function insert($type, $click, $time) {
         try {
-            $query = 'INSERT INTO data(loader_type, nb_click) VALUES(?, ?)';
+            $query = 'INSERT INTO data(loader_type, nb_click, timer) VALUES(?, ?, ?)';
             $prep = $this->pdo->prepare($query);
             $prep->bindValue(1, $type);
             $prep->bindValue(2, $click);
+            $prep->bindValue(3, $time);
             $prep->execute();
         }catch (PDOException $e) {
             header("");
@@ -39,9 +40,9 @@ class Saver {
     }
 
 }
-if (isset($_GET['type']) && isset($_GET['click']))
+if (isset($_GET['type']) && isset($_GET['click']) && isset($_GET['time']))
 $saver = new Saver();
 $saver->connection();
-$saver->insert($_GET['type'], $_GET['click']);
+$saver->insert($_GET['type'], $_GET['click'], $_GET['time']);
 ?>
 <h1>Saved !</h1>

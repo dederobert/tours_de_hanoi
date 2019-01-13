@@ -28,6 +28,7 @@ export class Board extends Component{
             clickedIdTower: null,
             clickedIdPellet: null,
             nbClick: 0,
+            time: 0,
             loader: null
         };
         console.dir(this.state.towers);
@@ -64,7 +65,7 @@ export class Board extends Component{
                 this.setState({towers: tower, clickedIdTower: null, clickedIdPellet: null});
                 if(i !== this.state.clickedIdTower) {
                     this.setState((state, props) => ({nbClick: state.nbClick + 1, loader:0}));
-                    if (win(this.state.towers[nbTower-1])) this.props.save(this.state.nbClick+1)
+                    if (win(this.state.towers[nbTower-1])) this.props.save(this.state.nbClick+1, this.state.time)
                 }
             }
         }
@@ -83,8 +84,8 @@ export class Board extends Component{
     render() {
         return (
             <div className="board container">
-                <div>Déplacement(s) = {this.state.nbClick}</div>
-                {win(this.state.towers[nbTower -1])?<div>Congratulation !</div>:""}
+                <div>Déplacement(s) = {this.state.nbClick} time = {this.state.time}</div>
+                {win(this.state.towers[nbTower -1])?<div>Félicitation !</div>:""}
                 {this.renderTower(0)}
                 {this.renderTower(1)}
                 {this.renderTower(2)}
@@ -100,6 +101,7 @@ export class Board extends Component{
     }
 
     tick() {
+        if (this.state.loader === null) this.setState((state, props) => ({time: state.time+0.1}));
         if (this.state.loader >= 100 || this.props.loaderId === -1)
             this.setState({loader: null});
         if (this.state.loader !== null)
