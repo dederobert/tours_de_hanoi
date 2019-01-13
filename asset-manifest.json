@@ -1,13 +1,13 @@
 {
   "main.css": "/tours_de_hanoi/static/css/main.cf13ded7.chunk.css",
-  "main.js": "/tours_de_hanoi/static/js/main.361ceffc.chunk.js",
-  "main.js.map": "/tours_de_hanoi/static/js/main.361ceffc.chunk.js.map",
+  "main.js": "/tours_de_hanoi/static/js/main.d5403087.chunk.js",
+  "main.js.map": "/tours_de_hanoi/static/js/main.d5403087.chunk.js.map",
   "static/js/1.39fd72b7.chunk.js": "/tours_de_hanoi/static/js/1.39fd72b7.chunk.js",
   "static/js/1.39fd72b7.chunk.js.map": "/tours_de_hanoi/static/js/1.39fd72b7.chunk.js.map",
   "runtime~main.js": "/tours_de_hanoi/static/js/runtime~main.009c1c3e.js",
   "runtime~main.js.map": "/tours_de_hanoi/static/js/runtime~main.009c1c3e.js.map",
   "static/css/main.cf13ded7.chunk.css.map": "/tours_de_hanoi/static/css/main.cf13ded7.chunk.css.map",
   "index.html": "/tours_de_hanoi/index.html",
-  "precache-manifest.7542821a7820e3bc19d1ae53fe52c0d1.js": "/tours_de_hanoi/precache-manifest.7542821a7820e3bc19d1ae53fe52c0d1.js",
+  "precache-manifest.fa94ee2421c32b3b5c411747dd51da5e.js": "/tours_de_hanoi/precache-manifest.fa94ee2421c32b3b5c411747dd51da5e.js",
   "service-worker.js": "/tours_de_hanoi/service-worker.js"
 }
