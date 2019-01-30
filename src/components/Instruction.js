@@ -5,7 +5,12 @@ export class Instruction extends Component{
         return (
             <div className="instruction container">
                 <h2>Informations</h2>
-                <p>Dans le cadre d'une étude visant à améliorer les interfaces utilisateur, nous vous sollicitons afin de jouer à un petit jeu. Le résultat du jeu sera sauvegardé <b>anonymement</b> afin de réaliser des statistiques.</p>
+                <p>Bonjour, <br/><br/>
+                    Nous allons vous présenter le jeu des tours de Hano&iuml; <br/><br/>
+                    Votre t&acirc;che consiste à résoudre le problème en réalisant le moins de déplacement possible.
+                    Le résultat du jeu sera sauvegardé <b>anonymement</b> afin de réaliser des statistiques. <br/><br/>
+                    Cette étude ne vous prendra pas plus de 2 minutes.
+                </p>
                 <br/>
                 <hr/>
                 <br/>
@@ -15,15 +20,11 @@ export class Instruction extends Component{
                     <ul>
                         <li>Vous ne pouvez bouger que le disque en haut de la pile</li>
                         <li>Vous ne pouvez bouger qu’un disque à la fois</li>
-                        <li>Seul un petit disque peut être placé sur un plus gros disque (un peu comme des poupées russes)</li>
+                        <li>Seul un petit disque peut être placé sur un plus gros disque</li>
                     </ul>
                 </p>
                 <br/>
-                <h2>Objectif</h2>
-                <br/>
-                <p>Vous devez finir le jeu en réalisant le <b>moins de déplacements</b> possible</p>
-                <br/>
-                <a onClick={() => this.props.onClick()} className="btn">Démarrer</a>
+                <a onClick={() => this.props.next()} className="btn">Démarrer l'étude</a>
             </div>
         );
     }

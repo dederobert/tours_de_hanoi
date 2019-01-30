@@ -12,15 +12,32 @@ export function isInvalid(i, tower) {
     return tower.length > 0 && i > Math.min(...tower);
 }
 
+
 function fillTower(nbTower, nbPellet) {
     var arr = Array.apply(null, Array(nbTower));
     arr = arr.map((x,i)=>{return []});
     arr[0] = Array.apply(null, Array(nbPellet));
     arr[0] = arr[0].map((x,i)=>{return i});
-    return arr;
+    return [[0,1,2,3,],[],[]];
 }
 
 export class Board extends Component{
+
+    /**
+     * Save the game state in the DB
+     */
+    saveSate(){
+        const params =
+            "user=" + this.props.user +
+            "&step=" + this.state.nbClick +
+            "&state=" + JSON.stringify(this.state.towers)
+        ;
+
+        const xhttp = new XMLHttpRequest();
+        xhttp.open("GET", "https://unrepented-apportio.000webhostapp.com/saver_step_hanoi.php?"+params);
+        xhttp.send();
+    }
+
     constructor(props) {
         super(props);
         this.state = {
@@ -31,10 +48,11 @@ export class Board extends Component{
             time: 0,
             loader: null
         };
-        console.dir(this.state.towers);
-        fillTower(nbTower, nbPellet);
     }
 
+    /**
+     * Create timer
+     */
     componentDidMount() {
         this.timerID = setInterval(
             () => this.tick(),
@@ -42,35 +60,56 @@ export class Board extends Component{
         )
     }
 
+    /**
+     * Remove timer
+     */
     componentWillUnmount() {
         clearInterval(this.timerID);
     }
 
+    /**
+     * Generate towers
+     * @param i Tower's identifiant
+     * @returns {*} the HTML tower
+     */
     renderTower(i) {
-        return <Tower idTower={i} value={this.state.towers[i]}
-                      clicked={this.state.clickedIdTower!==null && this.state.clickedIdTower === i}
-                      clickedId={this.state.clickedIdPellet}
-                      win={win(this.state.towers[nbTower-1])}
-                      onPelletClick={(idPellet) => this.handlePelletClick(i, idPellet)}
-                      onClick={() => this.handleClick(i)}/>
+        return(
+            <Tower idTower={i} value={this.state.towers[i]}
+                   clicked={this.state.clickedIdTower!==null && this.state.clickedIdTower === i}
+                   clickedId={this.state.clickedIdPellet}
+                   win={win(this.state.towers[nbTower-1])}
+                   onPelletClick={(idPellet) => this.handlePelletClick(i, idPellet)}
+                   onClick={() => this.handleClick(i)}/>
+        );
     }
 
+    /**
+     * Handle click on the tower
+     * @param i The tower's identifiant
+     */
     handleClick(i) {
         if (this.state.clickedIdPellet!==null) {
-            const tower = this.state.towers.slice();
-            if (!isInvalid(this.state.clickedIdPellet, tower[i])) {
-                tower[i].splice(0,0,this.state.clickedIdPellet);
+            const tower = this.state.towers.slice(); //Get the towers
+            if (!isInvalid(this.state.clickedIdPellet, tower[i])) { //Check if the placement is valid
+                tower[i].splice(0,0,this.state.clickedIdPellet); //Insert the pellet in destination tower
                 const index = tower[this.state.clickedIdTower].indexOf(this.state.clickedIdPellet);
-                tower[this.state.clickedIdTower].splice(index,1);
+                tower[this.state.clickedIdTower].splice(index,1);  // Remove the pellet from origin tower
                 this.setState({towers: tower, clickedIdTower: null, clickedIdPellet: null});
-                if(i !== this.state.clickedIdTower) {
-                    this.setState((state, props) => ({nbClick: state.nbClick + 1, loader:0}));
-                    if (win(this.state.towers[nbTower-1])) this.props.save(this.state.nbClick+1, this.state.time)
+                if(i !== this.state.clickedIdTower) { //Check if origin tower != destination tower
+                    this.setState((state, props) => ({nbClick: state.nbClick + 1, loader:0})); //Increment nbClick and start loader
+                    this.saveSate(); //Save the state
+                    if (win(this.state.towers[nbTower-1])) this.props.next(this.state.nbClick+1, this.state.time) //Check if win
                 }
             }
         }
     }
 
+
+    /**
+     * Handle click on the pellet
+     * @param idTower Tower's identifiant
+     * @param idPellet Pellet's identiifant
+     */
     handlePelletClick(idTower, idPellet) {
         if (this.state.clickedIdTower!==null && this.state.clickedIdTower===idTower && this.state.clickedIdPellet!==null && this.state.clickedIdPellet===idPellet)
             //On selectionne celui déjà séléctionné
@@ -84,7 +123,7 @@ export class Board extends Component{
     render() {
         return (
             <div className="board container">
-                <div>Déplacement(s) = {this.state.nbClick} time = {this.state.time}</div>
+                <div>Déplacement(s) = {this.state.nbClick}</div>
                 {win(this.state.towers[nbTower -1])?<div>Félicitation !</div>:""}
                 {this.renderTower(0)}
                 {this.renderTower(1)}

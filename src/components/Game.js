@@ -2,22 +2,31 @@ import React,{Component} from 'react'
 import {Board} from "./Board";
 import {Instruction} from "./Instruction";
 import {Congratulation} from "./Congratulation";
+import {Questions} from "./Questions";
 
 export class Game extends Component{
 
-    save(type, click, time) {
-        var xhttp = new XMLHttpRequest();
-        xhttp.open("GET", "https://unrepented-apportio.000webhostapp.com/saver.php?type="+type+"&click="+click+"&time="+time, true);
-        xhttp.send();
-        this.setState({start: false, congratulation: true})
+    handleNext(click, time) {
+        if (this.state.instruction)
+            this.setState({instruction: false, start: true});
+        else if (this.state.start)
+            this.setState({start: false, questions: true, time: time, click: click});
+        else if (this.state.questions)
+            this.setState({questions: false, congratulation: true});
     }
 
     constructor(props) {
         super(props);
+        const id = Math.floor((Math.random()*3) +1) -2;
         this.state = {
             instruction: true,
             start: false,
+            questions: false,
             congratulation: false,
+            game_type: id,
+            time:-1,
+            click: -1,
+
         }
     }
 
@@ -25,22 +34,18 @@ export class Game extends Component{
         return(
             <div className="Game">
                 <div className="game-board">
+                    {this.state.instruction?<Instruction next={() => this.handleNext(0,0)}/>:null}
                     {this.renderBoard()}
-                    {this.state.instruction?<Instruction onClick={() => this.handleClick()}/>:null}
-                    {this.state.congratulation?<Congratulation />:null}
+                    {this.state.questions?<Questions gameType={this.state.game_type} user={this.props.user} timer={this.state.time} clicks={this.state.click} next={() => this.handleNext(0,0)}/>:null}
+                    {this.state.congratulation?<Congratulation/>:null}
                 </div>
             </div>
         )
     }
 
-    handleClick() {
-        this.setState({instruction: false, start: true})
-    }
-
     renderBoard() {
         if (this.state.start) {
-            const id = Math.floor((Math.random()*3) +1) -2;
-            return <Board loaderId={id} timer={2} save={(click, time) => this.save(id, click, time)}/>
+            return <Board loaderId={this.state.game_type} user={this.props.user} timer={2} next={(click, time) => this.handleNext(click, time)}/>
         }
         return null;
     }

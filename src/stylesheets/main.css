@@ -150,6 +150,31 @@ button.tower-4:first-child {
   text-align: left;
 }
 
+#share-buttons img {
+  width: 35px;
+  padding: 5px;
+  border: 0;
+  box-shadow: none;
+  display: inline;
+}
+
+.Questions {
+  padding-top: 10px;
+}
+.Questions .rateInfo {
+  display: inline-block;
+  padding: 10px;
+}
+.Questions .rateInfo {
+  width: 190px;
+}
+.Questions input[type=number] {
+  margin-left: 5px;
+}
+.Questions input[type=radio] {
+  margin-right: 5px;
+}
+
 * {
   font-family: "Open Sans", sans-serif;
 }
