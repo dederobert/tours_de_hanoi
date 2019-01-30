@@ -2,11 +2,12 @@ import React from 'react'
 
 export function Congratulation(props){
     return (
-        <div className="congratulation">
-            <p>Félicitation vous avez résolu le problème. <br/> Pouvez vous prendre quelques minutes pour répondre à
-                ce questionnaire :</p><br/>
-            <br/>
-            <a href="https://github.com/dederobert/tours_de_hanoi" rel="noopener noreferrer" target="_blank"><i className="fab fa-github" title="GitHub du projet"></i></a>
+        <div className="congratulation container">
+            <p>Félicitation vous avez résolu le problème. <br/><br/>
+                Pour toute questions sur cette étude, merci de contacter Guillaume Gronier, chercheur en UX Design (guillaume.gronier@gmail.com)
+                <br/><br/>
+                Pour toute questions concernant l'application, rendez-vous sur <a href="https://github.com/dederobert/tours_de_hanoi" rel="noopener noreferrer" target="_blank">GitHub <i className="fab fa-github" title="GitHub du projet"></i></a>
+            </p>
             <br/>
             <h3>Partager</h3>
             <div id="share-buttons">
