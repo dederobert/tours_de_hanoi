@@ -9,10 +9,16 @@ L'objectif étant de mesurer l'impact des temps d'attente sur la prise de décis
 - Attente à focus faible: Un met un temps d'attente à l'utilisateur entre chaque mouvement en affichant le message _"Sauvegarde ..."_
 - Attente à focus fort: Un met un temps d'attente mais avec une barre de progression, celle-ci porte l'attention sur le temps de chargement.
 
+## TODO
+
+Reste à faire:
+
+- Design responsive 
+
 ## Changelog
 
-__*Le projet est actuelement en version alpha car il n'a pas été testé*__
-
+- 1.0.0: Sauvegarde des étapes, nouvelles sauvegarde des données  
+- 0.4.0: Sauvegarde du temps et page de fin 
 - 0.3.0: Sauvegarde des données 
 - 0.2.0: Ajout de temps d'attente 
 - 0.1.0: Code de base des tours de hanoï
