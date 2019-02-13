@@ -2,6 +2,9 @@
 
 Ce projet est un jeu des tours de Hanoï réalisé avec **React**. Il a pour objectif de mesurer l'effet d'un temps d'attente sur la prise de décision. Ainsi, ce jeu propose trois modes différents choisis aléatoirement: sans attente, avec attente à faible focus et attente avec fort focus.
 
+## Résultat
+Les résultats de l'étude sont traités sur l'application disponible à l'adresse suivante: [https://dederobert.github.io/hanoi_visualiseur/](https://dederobert.github.io/hanoi_visualiseur/)
+
 ## Les temps d'attente
 L'objectif étant de mesurer l'impact des temps d'attente sur la prise de décision, nous avons ajouté des temps d'attente au projet. Il existe trois modes de fonctionnement:
 
