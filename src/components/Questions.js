@@ -181,6 +181,7 @@ export class Questions extends React.Component{
             btnDisabled: state.gender === -1 || state.age === -1 ||
                 state.preference === -1 ,
         }));
+        this.save();
     }
 
     handleSubmit() {
