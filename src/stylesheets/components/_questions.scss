@@ -6,7 +6,12 @@
   }
 
   .rateInfo {
-    width: 190px;
+    @media (min-width: 600px) {
+      width: 190px;
+    }
+    @media (max-width: 600px) {
+      width: 90px;
+    }
   }
 
   input[type="number"] {
@@ -14,5 +19,14 @@
   }
   input[type="radio"] {
     margin-right: 5px;
+  }
+
+  .req {
+    color: red;
+  }
+
+  hr {
+    width: 300px;
+    margin: auto;
   }
 }

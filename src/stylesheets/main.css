@@ -5,7 +5,7 @@
 
 .App.light {
   background-color: #F9FFE5;
-  height: 100vh;
+  min-height: 100vh;
   color: #000;
 }
 .App.light h1 {
@@ -28,6 +28,21 @@
 }
 .App.light .btn:hover {
   background-color: #b10041;
+}
+@media (max-width: 600px) {
+  .App.light .block {
+    width: 100vw;
+  }
+}
+@media (min-width: 600px) and (max-width: 800px) {
+  .App.light .block {
+    width: 75vw;
+  }
+}
+@media (min-width: 800px) {
+  .App.light .block {
+    width: 50vw;
+  }
 }
 .App.light .container {
   position: absolute;
@@ -72,7 +87,14 @@
 .ghost {
   background-color: green;
   opacity: 0.5;
+}
+
+.no-touchevents .ghost {
   visibility: hidden;
+}
+
+.touchevents .ghost {
+  visibility: visible;
 }
 
 .invalid {
@@ -138,13 +160,45 @@ button.tower-4:first-child {
   visibility: visible;
 }
 
+@media (min-height: 500px) {
+  .game-board {
+    margin-top: 5vh;
+  }
+}
+
+@media (min-width: 510px), (orientation: landscape) {
+  .landscape-instruction {
+    display: none;
+  }
+}
+@media (max-width: 510px) and (orientation: portrait) {
+  .landscape-instruction {
+    display: block;
+  }
+}
+
 .board {
-  width: 510px;
+  margin: auto;
   height: 116px;
+}
+@media (min-width: 510px) {
+  .board {
+    width: 510px;
+  }
+}
+@media (max-width: 510px) {
+  .board {
+    width: 255px;
+  }
+}
+@media (max-width: 510px) and (orientation: portrait) {
+  .board {
+    display: none;
+  }
 }
 
 .instruction {
-  width: 500px;
+  margin: auto;
 }
 .instruction ul {
   text-align: left;
@@ -158,6 +212,11 @@ button.tower-4:first-child {
   display: inline;
 }
 
+.congratulation {
+  width: 50vw;
+  margin: auto;
+}
+
 .Questions {
   padding-top: 10px;
 }
@@ -165,14 +224,28 @@ button.tower-4:first-child {
   display: inline-block;
   padding: 10px;
 }
-.Questions .rateInfo {
-  width: 190px;
+@media (min-width: 600px) {
+  .Questions .rateInfo {
+    width: 190px;
+  }
+}
+@media (max-width: 600px) {
+  .Questions .rateInfo {
+    width: 90px;
+  }
 }
 .Questions input[type=number] {
   margin-left: 5px;
 }
 .Questions input[type=radio] {
   margin-right: 5px;
+}
+.Questions .req {
+  color: red;
+}
+.Questions hr {
+  width: 300px;
+  margin: auto;
 }
 
 * {

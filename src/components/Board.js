@@ -122,14 +122,17 @@ export class Board extends Component{
 
     render() {
         return (
-            <div className="board container">
-                <div>Déplacement(s) = {this.state.nbClick}</div>
-                {win(this.state.towers[nbTower -1])?<div>Félicitation !</div>:""}
-                {this.renderTower(0)}
-                {this.renderTower(1)}
-                {this.renderTower(2)}
-                {this.state.loader!==null?this.renderLoader(this.props.loaderId):""}
-            </div>
+            <>
+                <div className="board">
+                    <div>Déplacement(s) = {this.state.nbClick}</div>
+                    {win(this.state.towers[nbTower -1])?<div>Félicitation !</div>:""}
+                    {this.renderTower(0)}
+                    {this.renderTower(1)}
+                    {this.renderTower(2)}
+                    {this.state.loader!==null?this.renderLoader(this.props.loaderId):""}
+                </div>
+                <div className="landscape-instruction">Utiliser l'application en mode paysage</div>
+            </>
         );
     }
 
