@@ -19,7 +19,15 @@
 .ghost {
   background-color: green;
   opacity: 0.5;
+
+}
+
+//Display the ghost only on touchscreen
+.no-touchevents .ghost{
   visibility: hidden;
+}
+.touchevents .ghost{
+  visibility: visible;
 }
 
 .invalid {

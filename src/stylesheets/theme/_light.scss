@@ -7,6 +7,9 @@ $secondary-color-variant: #b10041;
 $on-primary: #FFF;
 $on-secondary: #FFF;
 
+$sm-size: 600px;
+$md-size: 800px;
+
 *{
   margin: 0;
   padding: 0;
@@ -14,7 +17,7 @@ $on-secondary: #FFF;
 
 .App.light {
   background-color: $background;
-  height: 100vh;
+  min-height: 100vh;
   color: #000;
 
   h1 {
@@ -39,6 +42,18 @@ $on-secondary: #FFF;
 
     &:hover {
       background-color: $secondary-color-variant;
+    }
+  }
+
+  .block {
+    @media (max-width:$sm-size) {
+      width: 100vw;
+    }
+    @media (min-width:$sm-size) and (max-width: $md-size) {
+      width: 75vw;
+    }
+    @media (min-width:$md-size) {
+      width: 50vw;
     }
   }
 

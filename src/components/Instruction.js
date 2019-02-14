@@ -3,7 +3,7 @@ import React, {Component} from "react";
 export class Instruction extends Component{
     render() {
         return (
-            <div className="instruction container">
+            <div className="instruction block">
                 <h2>Informations</h2>
                 <p>Bonjour, <br/><br/>
                     Nous allons vous présenter le jeu des tours de Hano&iuml; <br/><br/>
@@ -24,7 +24,7 @@ export class Instruction extends Component{
                     </ul>
                 </p>
                 <br/>
-                <a onClick={() => this.props.next()} className="btn">Démarrer l'étude</a>
+                <button onClick={() => this.props.next()} className="btn">Démarrer l'étude</button>
             </div>
         );
     }

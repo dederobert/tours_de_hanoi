@@ -1,5 +1,5 @@
 import React from "react";
-
+import {Ladder} from "./Ladder";
 
 
 export class Questions extends React.Component{
@@ -22,6 +22,8 @@ export class Questions extends React.Component{
             rate_wait: "-1",
         }
     }
+
+
 
     save() {
         const params =
@@ -52,6 +54,7 @@ export class Questions extends React.Component{
         return(
             <div className="Questions">
                 <form onSubmit={() => this.handleSubmit()}>
+                    <em>Les champs marqués d'un astérisque (<i className="req">*</i>) sont requis</em><br/><br/>
                     <label htmlFor="age">Quel est votre âge ? <i className="req">*</i></label>
                     <input type="number" name="age" id="age" min="10" max="99" required onChange={(event) => this.handleChange(event)}/>
                     <br/><br/>
@@ -59,49 +62,21 @@ export class Questions extends React.Component{
                     <input type="radio" name="gender" value="homme" onChange={(event) => this.handleChange(event)}/>Un homme <br/>
                     <input type="radio" name="gender" value="femme" onChange={(event) => this.handleChange(event)}/>Une femme
 
-                    <br/><br/>
+                    <br/><br/><hr/><br/>
                     <label htmlFor="">Globalement, avez-vous trouvé le jeu de la Tour de Hanoï ? <span className="req">*</span></label><br/>
-                    <div className="rateInfo">Pas du tout intéressant</div>
-                    <input type="radio" value="1" name="rate_interest" required onChange={(event) => this.handleChange(event)}/>
-                    <input type="radio" value="2" name="rate_interest" onChange={(event) => this.handleChange(event)}/>
-                    <input type="radio" value="3" name="rate_interest" onChange={(event) => this.handleChange(event)}/>
-                    <input type="radio" value="4" name="rate_interest" onChange={(event) => this.handleChange(event)}/>
-                    <input type="radio" value="5" name="rate_interest" onChange={(event) => this.handleChange(event)}/>
-                    <input type="radio" value="6" name="rate_interest" onChange={(event) => this.handleChange(event)}/>
-                    <input type="radio" value="7" name="rate_interest" onChange={(event) => this.handleChange(event)}/>
-                    <div className="rateInfo">Tout à fait intéressant</div>
-                    <br/>
-                    <div className="rateInfo">Pas du tout stimulant</div>
-                    <input type="radio" value="1" name="rate_stimu" required onChange={(event) => this.handleChange(event)}/>
-                    <input type="radio" value="2" name="rate_stimu" onChange={(event) => this.handleChange(event)}/>
-                    <input type="radio" value="3" name="rate_stimu" onChange={(event) => this.handleChange(event)}/>
-                    <input type="radio" value="4" name="rate_stimu" onChange={(event) => this.handleChange(event)}/>
-                    <input type="radio" value="5" name="rate_stimu" onChange={(event) => this.handleChange(event)}/>
-                    <input type="radio" value="6" name="rate_stimu" onChange={(event) => this.handleChange(event)}/>
-                    <input type="radio" value="7" name="rate_stimu" onChange={(event) => this.handleChange(event)}/>
-                    <div className="rateInfo">Tout à fait stimulant</div>
 
-                    <br/><br/>
-                    <label htmlFor="">Globalement, comment avez-vous trouvé l’application en ligne qui vous a permis de jouer ? <span className="req">*</span></label><br/>
-                    <div className="rateInfo">Pas du tout attrayante</div>
-                    <input type="radio" value="1" name="rate_visu" required onChange={(event) => this.handleChange(event)}/>
-                    <input type="radio" value="2" name="rate_visu" onChange={(event) => this.handleChange(event)}/>
-                    <input type="radio" value="3" name="rate_visu" onChange={(event) => this.handleChange(event)}/>
-                    <input type="radio" value="4" name="rate_visu" onChange={(event) => this.handleChange(event)}/>
-                    <input type="radio" value="5" name="rate_visu" onChange={(event) => this.handleChange(event)}/>
-                    <input type="radio" value="6" name="rate_visu" onChange={(event) => this.handleChange(event)}/>
-                    <input type="radio" value="7" name="rate_visu" onChange={(event) => this.handleChange(event)}/>
-                    <div className="rateInfo">Tout à fait attrayante</div>
+
+                    <Ladder name="rate_interest" minVal="Pas du tout intéressant" maxVal="Tout à fait intéressant" handleChange={(e)=>this.handleChange(e)}/>
+
                     <br/>
-                    <div className="rateInfo">Très compliquée à utiliser</div>
-                    <input type="radio" value="1" name="rate_complexity" required onChange={(event) => this.handleChange(event)}/>
-                    <input type="radio" value="2" name="rate_complexity" onChange={(event) => this.handleChange(event)}/>
-                    <input type="radio" value="3" name="rate_complexity" onChange={(event) => this.handleChange(event)}/>
-                    <input type="radio" value="4" name="rate_complexity" onChange={(event) => this.handleChange(event)}/>
-                    <input type="radio" value="5" name="rate_complexity" onChange={(event) => this.handleChange(event)}/>
-                    <input type="radio" value="6" name="rate_complexity" onChange={(event) => this.handleChange(event)}/>
-                    <input type="radio" value="7" name="rate_complexity" onChange={(event) => this.handleChange(event)}/>
-                    <div className="rateInfo">Très facile à utiliser</div>
+                    <Ladder name="rate_stimu" minVal="Pas du tout stimulant" maxVal="Tout à fait stimulant" handleChange={(e)=>this.handleChange(e)}/>
+                    <br/><hr/><br/>
+                    <label htmlFor="">Globalement, comment avez-vous trouvé l’application en ligne qui vous a permis de jouer ? <span className="req">*</span></label><br/>
+                    <Ladder name="rate_visu" minVal="Pas du tout attrayante" maxVal="Tout à fait attrayante" handleChange={(e)=>this.handleChange(e)}/>
+
+                    <br/>
+                    <Ladder name="rate_complexity" minVal="Très compliquée à utiliser" maxVal="Très facile à utiliser" handleChange={(e)=>this.handleChange(e)}/>
+
                     <br/>
                     <div className="rateInfo">Pas du tout réactive</div>
                     <input type="radio" value="1" name="rate_reactivity" required onChange={(event) => this.handleChange(event)}/>
@@ -112,7 +87,7 @@ export class Questions extends React.Component{
                     <input type="radio" value="6" name="rate_reactivity" onChange={(event) => this.handleChange(event)}/>
                     <input type="radio" value="7" name="rate_reactivity" onChange={(event) => this.handleChange(event)}/>
                     <div className="rateInfo">Très réactive</div>
-                    <br/><br/>
+                    <br/><br/><hr/><br/>
 
                     {this.props.gameType !== -1?
                         <div className="Attente">
@@ -140,6 +115,8 @@ export class Questions extends React.Component{
                             <label htmlFor="time_long">Vous attendiez-vous à attendre plus ou moins longtemps entre chaque coup ? <span className="req">*</span></label><br/>
                             <input type="radio" value="moins" name="time_long" required onChange={(event) => this.handleChange(event)}/>Moins longtemps <br/>
                             <input type="radio" value="plus" name="time_long" onChange={(event) => this.handleChange(event)}/>Plus longtemps <br/>
+                            <br/>
+                            <hr/>
                             <br/>
 
                             <label htmlFor="">Vous &ecirc;tes-vous focalisé(e) sur ce temps d'attente ? <span className="req">*</span></label><br/>
